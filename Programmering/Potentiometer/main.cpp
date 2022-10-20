@@ -18,7 +18,7 @@ int main(void) {
 	uint16_t potentiometerValue;
 	uint16_t threshold_level;
 	threshold_level= 0b10000000;
-	DDRB |= (1 << PB0); //Data Direction Register B: writing a 1 to the bit enables output
+	DDRD |= (1 << PD6); //Data Direction Register B: writing a 1 to the bit enables output
 
 	initADC0();
 
@@ -29,10 +29,10 @@ int main(void) {
 		potentiometerValue= ADC; //read ADC value in
 		
 		if (potentiometerValue > threshold_level) {
-			PORTB= 0b00000001; //turn on LED attached to port PB0
+			PORTD= 0b00000001; //turn on LED attached to port PB0
 		}
 		else {
-			PORTB= 0b00000000; //turn off LED attached to port PB0
+			PORTD= 0b00000000; //turn off LED attached to port PB0
 		}
 	}
 }
